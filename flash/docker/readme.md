@@ -1,61 +1,34 @@
-### Reference
+## Reference
 - [SDK Manger - Docker Images](https://docs.nvidia.com/sdk-manager/docker-containers/index.html)
 - [CLI arguments](https://docs.nvidia.com/sdk-manager/sdkm-command-line-install/index.html)
+- 
+---
+## Prerequisite
+- Complete the following instructions.
+  - [1.1. Download and Install](https://docs.nvidia.com/sdk-manager/docker-containers/index.html#download-install)
 
+my env:
+ - os: ubuntu20.04
+ - Docker version 20.10.17, build 100c701
+ - Docker Image tag: 1.9.0.10816-Ubuntu_20.04
+ - flash device: orin devkit
+ - flash jetpack: jp5.0.2
+ 
+<br/>
 
+---
+## Flashing Step
+1. put orin into recovery mode.
+2. bash ./flash_docker.sh
 
-### Commnad Example
+<br/>
 
-```
-docker run -it --privileged \
-    -v /dev/bus/usb:/dev/bus/usb/ \
-    -v /dev:/dev \
-    -v /media/$USER:/media/nvidia:slave \
-    --name JetPack_NX_Devkit \
-    --network host sdkmanager \
-    --cli install \
-    --logintype devzone \
-    --product Jetson \
-    --target P3668-0000 \
-    --targetos Linux \
-    --version 4.4.1 \
-    --select 'Jetson OS' \
-    --deselect 'Jetson SDK Components' \
-    --flash all \
-    --license accept \
-    --staylogin true \
-    --datacollection enable 
-    --exitonfinis
-    --user 
-```
-```
-docker run -it --privileged \
-    -v /dev/bus/usb:/dev/bus/usb/ \
-    -v /dev:/dev \
-    -v /media/$USER:/media/nvidia:slave \
-    --name JetPack_NX_Devkit \
-    --network host sdkmanager \
-    --cli install \
-    --logintype devzone \
-    --product Jetson \
-    --target JETSON_AGX_ORIN_TARGETS \
-    --targetos Linux \
-    --version 5.0.2 \
-    --select 'Jetson OS' \
-    --deselect 'Jetson SDK Components' \
-    --flash all \
-    --license accept \
-    --datacollection enable 
-    --user 
-    --host \
-    --additionalsdk 'DeepStream 6.1.1'
-```
-
+---
+## Memo
 ### select or deselet option
 Available options: Jetson Linux, Jetson SDK Components, Developer Tools, Developer Tools for Deep Learning
 
-
-### Query 
+### Query command
 -------
 JetPack 5.0.2 (rev. 1)
 sdkmanager --cli install --logintype devzone --product Jetson --version 5.0.2 --targetos Linux --host --target JETSON_AGX_XAVIER_TARGETS --flash all --additionalsdk 'DeepStream 6.1.1'
@@ -153,7 +126,7 @@ sdkmanager --cli install --logintype devzone --product Jetson --version 3.3.4 --
 
 -------
 
-### Help 
+### Help commnad
 (base) ataka@ataka-pc:~/nvidia/sdkmanger/docker$  docker run -it --rm sdkmanager --help
 
 NVIDIA SDK MANAGER
